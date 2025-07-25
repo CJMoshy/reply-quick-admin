@@ -46,7 +46,7 @@ export async function deleteNumber(number: string) {
 
 export async function getNumbers() {
 
-    const response = await fetch(process.env.PHONE_API_URL!, {
+    const response = await fetch(process.env.PHONE_API_URL! + '/all', {
         method: "GET",
         headers: {
             "Content-Type": "application/json"

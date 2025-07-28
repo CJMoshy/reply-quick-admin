@@ -18,8 +18,11 @@ export default function NumbersList({ numbers }: NumbersListProps) {
             <h3 className="text-lg font-semibold mb-2">Existing Numbers</h3>
             <ul className="list-none p-0">
                 {numbers.map((number) => (
-                    <li key={number.id} className="flex justify-between items-center py-2">
+                    <li key={number.id} className="flex justify-between items-center py-2 border-b border-gray-200">
                         <span>{formatPhoneNumber(number.phoneNumber)}</span>
+                        <span className={`text-sm ${number.status ? 'text-green-600' : 'text-red-600'}`}>
+                            {number.status ? 'Available' : 'Taken'}
+                        </span>
                         <button
                             className="bg-red-600 text-white px-3 py-1.5 rounded-md cursor-pointer"
                             onClick={deleteNumber.bind(null, number.phoneNumber)}

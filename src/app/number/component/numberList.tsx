@@ -1,6 +1,15 @@
 import { PhoneNumber } from ".."
 import { deleteNumber } from "../actions/numberActions";
 import { Button } from "@/components/ui/button";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+import {
+    X,
+    Check
+} from 'lucide-react'
 interface NumbersListProps {
     numbers: PhoneNumber[];
 }
@@ -21,8 +30,14 @@ export default function NumbersList({ numbers }: NumbersListProps) {
                 {numbers.map((number) => (
                     <li key={number.id} className="flex justify-between items-center py-2 border-b border-gray-200">
                         <span>{formatPhoneNumber(number.phoneNumber)}</span>
-                        <span className={`text-sm ${number.status ? 'text-green-600' : 'text-red-600'} p-2`}>
-                            {number.status ? 'Available' : 'Taken'}
+                        <span className={`text-sm ${number.status ? 'text-green-600' : 'text-red-600'} px-3`}>
+
+                            <Tooltip>
+                                <TooltipTrigger>{number.status ? <Check /> : <X />}</TooltipTrigger>
+                                <TooltipContent>
+                                    {number.status ? 'Available' : 'Taken'}
+                                </TooltipContent>
+                            </Tooltip>
                         </span>
                         <Button
                             className="hover:bg-red-600 text-white px-3 py-1.5 rounded-md cursor-pointer"

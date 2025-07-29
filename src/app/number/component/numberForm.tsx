@@ -1,9 +1,12 @@
 import { addNumber } from "../actions/numberActions"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 export default function NumberForm() {
     return (
-        <form className="w-[400px] bg-white p-6 rounded-xl shadow-md mx-auto" action={addNumber}>
-            <h2 className="text-xl font-semibold mb-4 text-center">Add Numbers</h2>
-            <input
+
+        < form action={addNumber} >
+            <h2 className="text-xl font-semibold mb-4 text-center border-b">Add A Number</h2>
+            <Input
                 type="text"
                 name="phoneNumber"
                 required
@@ -12,12 +15,13 @@ export default function NumberForm() {
                 placeholder="+4151234567"
                 className="w-full p-2.5 my-2 text-base border rounded-md"
             />
-            <button
+            <Button
                 type="submit"
-                className="w-full py-2.5 mt-2 bg-gray-700 text-white font-bold border-none rounded-md hover:bg-black transition-colors duration-300"
+                className="w-full"
             >
                 Save
-            </button>
-        </form>
+            </Button>
+        </form >
+
     )
 }

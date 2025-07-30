@@ -29,16 +29,19 @@ export default function NumbersList({ numbers }: NumbersListProps) {
             <ul className="list-none p-0">
                 {numbers.map((number) => (
                     <li key={number.id} className="flex justify-between items-center py-2 border-b border-gray-200">
-                        <span>{formatPhoneNumber(number.phoneNumber)}</span>
-                        <span className={`text-sm ${number.status ? 'text-green-600' : 'text-red-600'} px-3`}>
+                        <span className="mx-2 min-w-[150px]">{formatPhoneNumber(number.phoneNumber)}</span>
 
+                        <span className="text-sm px-5 flex justify-center w-[80px]">
                             <Tooltip>
-                                <TooltipTrigger>{number.status ? <Check /> : <X />}</TooltipTrigger>
+                                <TooltipTrigger>
+                                    {number.status ? <Check className="text-green-600" /> : <X className="text-red-600" />}
+                                </TooltipTrigger>
                                 <TooltipContent>
                                     {number.status ? 'Available' : 'Taken'}
                                 </TooltipContent>
                             </Tooltip>
                         </span>
+
                         <Button
                             className="hover:bg-red-600 text-white px-3 py-1.5 rounded-md cursor-pointer"
                             onClick={deleteNumber.bind(null, number.phoneNumber)}

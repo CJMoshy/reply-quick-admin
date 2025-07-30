@@ -2,7 +2,6 @@
 import { getNumbers } from "./actions/numberActions"
 import NumbersList from "./component/numberList";
 import NumberForm from "./component/numberForm";
-import Link from "next/link";
 export default async function Page() {
     const numbers = await getNumbers();
     return (

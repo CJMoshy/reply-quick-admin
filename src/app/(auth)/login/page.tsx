@@ -1,6 +1,7 @@
 import { login } from './actions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+
 export default function LoginPage() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4">

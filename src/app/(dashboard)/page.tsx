@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { signOut, getUser } from "@/utils/actions/actions";
+import { getUser } from "@/utils/actions/actions";
 export default async function Home() {
   const user = await getUser();
   return (

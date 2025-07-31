@@ -6,7 +6,7 @@ export default async function Page() {
     return (
         <div className="flex flex-col h-screen w-[70%] mx-auto">
             <div>
-                <h1 className="text-2xl font-bold text-center">Dashboard Prompt Page</h1>
+                <h1 className="text-2xl font-bold text-center">Agent Prompt Editor</h1>
             </div>
             <div>
                 <p className="mt-4 border-b ml-5">Agents</p>
@@ -16,7 +16,7 @@ export default async function Page() {
                     {agents.map((agent) => (
                         <li key={agent.agent_id} className="m-2 p-2 border rounded hover:bg-gray-100">
                             <div className="flex justify-between items-center">
-                                <div>
+                                <div className="cursor-default">
                                     <span className="font-semibold">{agent.agent_name}</span>
                                     <p className="text-xs text-gray-500">{agent.agent_id}</p>
                                     <p className="text-sm text-gray-600">{agent.voice_id}</p>

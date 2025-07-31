@@ -6,6 +6,11 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Pen } from "lucide-react"
@@ -24,9 +29,18 @@ export default async function Modal({ agent }: { agent: Retell.AgentResponse }) 
         const llm = await fetchLLM(llmId);
         return (
             <Dialog>
-                <DialogTrigger className="hover:border-b hover:border-black"><Pen /></DialogTrigger>
+                <DialogTrigger className="hover:border-b hover:border-black cursor-pointer">
+                    <Tooltip>
+                        <TooltipTrigger className="cursor-pointer">
+                            <Pen />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            Edit
+                        </TooltipContent>
+                    </Tooltip>
+                </DialogTrigger>
                 <DialogContent className="w-[full] max-h-[90vh] p-6 overflow-hidden">
-                    <DialogHeader>
+                    <DialogHeader >
                         <DialogTitle>Edit Agent Prompt</DialogTitle>
                         <DialogDescription>
                             Edit the prompt below to modify the current agents prompt

@@ -39,4 +39,14 @@ export default class RetellService {
             throw error;
         }
     }
+
+    public async updatePrompt(prompt: string, llmId: string) {
+        try {
+            const updated = await this.client.llm.update(llmId, { general_prompt: prompt })
+            console.log(updated)
+        } catch (error) {
+            console.error("Error updating llm prompt", error)
+            throw error
+        }
+    }
 }

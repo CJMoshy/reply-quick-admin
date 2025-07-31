@@ -1,6 +1,7 @@
 "use server"
 
 import RetellService from "@/lib/retell"
+import { revalidatePath } from "next/cache"
 import { AgentResponse } from "retell-sdk/resources.mjs"
 
 export async function fetchAgents() {
@@ -25,5 +26,6 @@ export async function fetchLLM(llmId: string) {
 export async function updatePrompt(formdata: FormData) {
     const prompt = formdata.get("prompt")
     const llmId = formdata.get("llmId")
-    console.log(prompt, llmId)
+    await RetellService.instance.updatePrompt(String(prompt), String(llmId))
+    revalidatePath("/prompt")
 }

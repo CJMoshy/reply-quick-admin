@@ -31,7 +31,7 @@ export default async function Modal({ agent }: { agent: Retell.AgentResponse }) 
             <Dialog>
                 <DialogTrigger className="hover:border-b hover:border-black cursor-pointer">
                     <Tooltip>
-                        <TooltipTrigger className="cursor-pointer">
+                        <TooltipTrigger className="cursor-pointer" asChild>
                             <Pen />
                         </TooltipTrigger>
                         <TooltipContent>

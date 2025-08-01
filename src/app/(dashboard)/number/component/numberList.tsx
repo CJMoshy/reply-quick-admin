@@ -8,8 +8,15 @@ import {
 } from "@/components/ui/tooltip"
 import {
     X,
-    Check
+    Check,
+    Trash2
 } from 'lucide-react'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+
 interface NumbersListProps {
     numbers: PhoneNumber[];
 }
@@ -42,12 +49,18 @@ export default function NumbersList({ numbers }: NumbersListProps) {
                             </Tooltip>
                         </span>
 
-                        <Button
-                            className="hover:bg-red-600 text-white px-3 py-1.5 rounded-md cursor-pointer"
-                            onClick={deleteNumber.bind(null, number.phoneNumber)}
-                        >
-                            Delete
-                        </Button>
+                        <Popover>
+                            <PopoverTrigger ><Trash2 className="cursor-pointer" /></PopoverTrigger>
+                            <PopoverContent>
+                                <p className="text-center font-semibold">Are You Sure?</p>
+                                <Button
+                                    className="hover:bg-red-600 text-white px-3 py-1.5 rounded-md cursor-pointer w-full mt-2"
+                                    onClick={deleteNumber.bind(null, number.phoneNumber)}
+                                >
+                                    Confirm
+                                </Button>
+                            </PopoverContent>
+                        </Popover>
                     </li>
                 ))}
             </ul>

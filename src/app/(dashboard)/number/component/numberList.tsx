@@ -33,36 +33,50 @@ export default function NumbersList({ numbers }: NumbersListProps) {
     return (
         <div className="mt-8">
             <h3 className="text-lg font-semibold mb-2">Existing Numbers</h3>
-            <ul className="list-none p-0">
-                {numbers.map((number) => (
-                    <li key={number.id} className="flex justify-between items-center py-2 border-b border-gray-200">
-                        <span className="mx-2 min-w-[150px]">{formatPhoneNumber(number.phoneNumber)}</span>
-
-                        <span className="text-sm px-5 flex justify-center w-[80px]">
-                            <Tooltip>
-                                <TooltipTrigger>
-                                    {number.status ? <Check className="text-green-600" /> : <X className="text-red-600" />}
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    {number.status ? 'Available' : 'Taken'}
-                                </TooltipContent>
-                            </Tooltip>
-                        </span>
-
-                        <Popover>
-                            <PopoverTrigger ><Trash2 className="cursor-pointer" /></PopoverTrigger>
-                            <PopoverContent>
-                                <p className="text-center font-semibold">Are You Sure?</p>
-                                <Button
-                                    className="hover:bg-red-600 text-white px-3 py-1.5 rounded-md cursor-pointer w-full mt-2"
-                                    onClick={deleteNumber.bind(null, number.phoneNumber)}
-                                >
-                                    Confirm
-                                </Button>
-                            </PopoverContent>
-                        </Popover>
-                    </li>
-                ))}
-            </ul>
-        </div>)
+            <div className="overflow-x-auto">
+                <table className="min-w-full">
+                    <thead>
+                        <tr className="bg-gray-100">
+                            <th className="py-2 px-4 text-left">Number</th>
+                            <th className="py-2 px-4 text-left">Name</th>
+                            <th className="py-2 px-4 text-left">Availability</th>
+                            <th className="py-2 px-4 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {numbers.map((number) => (
+                            <tr key={number.id}>
+                                <td className="py-2 px-4">{formatPhoneNumber(number.phoneNumber)}</td>
+                                <td className="py-2 px-4">{number.userName || '-'}</td>
+                                <td className="py-2 px-4">
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            {number.status ? <Check className="text-green-600" /> : <X className="text-red-600" />}
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            {number.status ? 'Available' : 'Taken'}
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </td>
+                                <td className="py-2 px-4">
+                                    <Popover>
+                                        <PopoverTrigger ><Trash2 className="cursor-pointer" /></PopoverTrigger>
+                                        <PopoverContent>
+                                            <p className="text-center font-semibold">Are You Sure?</p>
+                                            <Button
+                                                className="hover:bg-red-600 text-white px-3 py-1.5 rounded-md cursor-pointer w-full mt-2"
+                                                onClick={deleteNumber.bind(null, number.phoneNumber)}
+                                            >
+                                                Confirm
+                                            </Button>
+                                        </PopoverContent>
+                                    </Popover>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    )
 }

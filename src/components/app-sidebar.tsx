@@ -1,4 +1,4 @@
-import { Home, Phone, MessageCircleMore } from "lucide-react"
+import { Home, Phone, MessageCircleMore, ClipboardList } from "lucide-react"
 import Link from "next/link"
 import {
     Sidebar,
@@ -30,6 +30,11 @@ const items = [
         title: "Prompts",
         url: "/prompt",
         icon: MessageCircleMore,
+    },
+    {
+        title: "Assign Number",
+        url: "/assign",
+        icon: ClipboardList,
     }
 ]
 
